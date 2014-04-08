@@ -30,6 +30,7 @@ import org.eclipse.jface.text.BadLocationException;
 import org.eclipse.jface.text.FindReplaceDocumentAdapter;
 import org.eclipse.jface.text.IDocument;
 import org.eclipse.jface.text.IRegion;
+import org.eclipse.wst.jsdt.core.JavaScriptCore;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.w3c.dom.Node;
@@ -174,19 +175,19 @@ public class IDETernProject extends TernProject<IFile> {
 	}
 
 	/**
-	 * Return true if the given project have tern nature
-	 * "tern.eclipse.ide.core.ternnature" and false otherwise.
+	 * Return true if the given project have JavaScript nature
+	 * "org.eclipse.wst.jsdt.core.jsNature" and false otherwise.
 	 * 
 	 * @param project
 	 *            Eclipse project.
-	 * @return true if the given project have tern nature
-	 *         "tern.eclipse.ide.core.ternnature" and false otherwise.
+	 * @return true if the given project have JavaScript nature
+	 *         "org.eclipse.wst.jsdt.core.jsNature" and false otherwise.
 	 */
 	public static boolean hasTernNature(IProject project) {
 		try {
-			return project.hasNature(TernNature.ID);
+			return project.hasNature(JavaScriptCore.NATURE_ID);
 		} catch (CoreException e) {
-			Trace.trace(Trace.SEVERE, "Error tern nature", e);
+			Trace.trace(Trace.SEVERE, "Error tern (JavaScript) nature", e);
 			return false;
 		}
 	}
